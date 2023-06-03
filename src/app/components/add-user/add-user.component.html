@@ -1,0 +1,67 @@
+<div class="row justify-content-center mt-5">
+
+  <div class="col-md-4">
+    <div *ngIf="errorFlag" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+   
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" enctype='multipart/form-data'>
+      <div class="form-group">
+        <label>First Name</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="first_name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Last Name</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="last_name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="email"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="phone_number"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Profile Image</label>
+        <input
+          class="form-control"
+          type="file"
+          formControlName="image"
+          (change)="onFileSelect($event)"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary btn-block"  [disabled]="!userForm.valid" type="submit">
+          Add User
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
